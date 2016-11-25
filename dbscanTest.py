@@ -19,7 +19,7 @@ np.set_printoptions(threshold=np.nan)
 
 ##############################################################################
 # Generate sample data
-centers = [[1, 1], [-1, -1], [1, -1]]
+centers = [[11, 11], [9, 9], [11, 9]]
 X, labels_true = make_blobs(n_samples=750, centers=centers, cluster_std=0.4,
                             random_state=0)
 
@@ -51,25 +51,25 @@ print("Silhouette Coefficient: %0.3f"
 
 ##############################################################################
 # Plot result
-import matplotlib.pyplot as plt
+# import matplotlib.pyplot as plt
 
-# Black removed and is used for noise instead.
-unique_labels = set(labels)
-colors = plt.cm.Spectral(np.linspace(0, 1, len(unique_labels)))
-for k, col in zip(unique_labels, colors):
-    if k == -1:
-        # Black used for noise.
-        col = 'k'
+# # Black removed and is used for noise instead.
+# unique_labels = set(labels)
+# colors = plt.cm.Spectral(np.linspace(0, 1, len(unique_labels)))
+# for k, col in zip(unique_labels, colors):
+#     if k == -1:
+#         # Black used for noise.
+#         col = 'k'
 
-    class_member_mask = (labels == k)
+#     class_member_mask = (labels == k)
 
-    xy = X[class_member_mask & core_samples_mask]
-    plt.plot(xy[:, 0], xy[:, 1], 'o', markerfacecolor=col,
-             markeredgecolor='k', markersize=14)
+#     xy = X[class_member_mask & core_samples_mask]
+#     plt.plot(xy[:, 0], xy[:, 1], 'o', markerfacecolor=col,
+#              markeredgecolor='k', markersize=14)
 
-    xy = X[class_member_mask & ~core_samples_mask]
-    plt.plot(xy[:, 0], xy[:, 1], 'o', markerfacecolor=col,
-             markeredgecolor='k', markersize=6)
+#     xy = X[class_member_mask & ~core_samples_mask]
+#     plt.plot(xy[:, 0], xy[:, 1], 'o', markerfacecolor=col,
+#              markeredgecolor='k', markersize=6)
 
-plt.title('Estimated number of clusters: %d' % n_clusters_)
-plt.show()
+# plt.title('Estimated number of clusters: %d' % n_clusters_)
+# plt.show()
